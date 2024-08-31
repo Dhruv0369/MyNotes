@@ -10,6 +10,8 @@ const AddNote = () => {
     const handleClick = (e) => {
         e.preventDefault();
         addNote(note.title, note.description, note.tag);
+        // Input fields ko reset kar rahe hain  value={note.title}   ||  value={note.description}
+        setNote({ title: "", description: "", tag: "default" });
 
     }
     const onchange = (e) => {
@@ -22,11 +24,11 @@ const AddNote = () => {
             <form>
                 <div className="mb-3 ">
                     <label htmlFor="title" className="form-label">Title</label>
-                    <input type="text" className="form-control" id="title" name="title" onChange={onchange} />
+                    <input type="text" className="form-control" id="title" name="title" value={note.title} onChange={onchange}/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="description" className="form-label">Description</label>
-                    <input type="text" className="form-control" id="description" name="description" onChange={onchange} />
+                    <input type="text" className="form-control" id="description" name="description" value={note.description} onChange={onchange} />
                 </div>
                 <button type="submit" className="btn btn-primary" onClick={handleClick} >Add Note</button>
             </form>
