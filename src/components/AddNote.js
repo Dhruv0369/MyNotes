@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react'
 import noteContext from "../context/notes/noteContext"
+// import { ToastContainer } from 'react-toastify';
+import { toast } from 'sonner';
 
 const AddNote = () => {
     const context = useContext(noteContext);
@@ -8,6 +10,7 @@ const AddNote = () => {
     const [note, setNote] = useState({ title: "", description: "", tag: "" })
 
     const handleClick = (e) => {
+        toast.success('Added Note!')
         e.preventDefault();
         addNote(note.title, note.description, note.tag);
         setNote({ title: "", description: "", tag: "" })

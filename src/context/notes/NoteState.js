@@ -1,5 +1,7 @@
 import NoteContext from "./noteContext";
 import { useState } from "react";
+import { toast } from 'sonner';
+
 
 const NoteState = (props) => {
   const host = "http://localhost:5000"
@@ -8,7 +10,7 @@ const NoteState = (props) => {
 
 
 
-///////////////////////////////////////////////////////////////////////////////////////   Get All Note   /////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////   Get All Note   /////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -26,7 +28,7 @@ const NoteState = (props) => {
   }
 
 
-///////////////////////////////////////////////////////////////////////////////////////    Add a Note  ///////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////    Add a Note  ///////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -47,26 +49,40 @@ const NoteState = (props) => {
   }
 
 
-///////////////////////////////////////////////////////////////////////////////////////    Delete a Note  ////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////    Delete a Note  ////////////////////////////////////////////////////////////////////////////////////
 
 
 
   const deleteNote = async (id) => {
     // API Call
     const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjZiMzE3NTllOGIxMDU4NTA3MDhkNTg3In0sImlhdCI6MTcyMzAyMTM1NH0.7qBWS--lCNuxgyYaSrDHdKS0w8yS8GEJKxQtPhyu42c"
-      }
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjZiMzE3NTllOGIxMDU4NTA3MDhkNTg3In0sImlhdCI6MTcyMzAyMTM1NH0.7qBWS--lCNuxgyYaSrDHdKS0w8yS8GEJKxQtPhyu42c"
+        }
     });
-    const json = response.json();
-    const newNotes = notes.filter((note) => { return note._id !== id })
-    setNotes(newNotes)
-  }
+
+    const json = await response.json(); // Await the json response
+    console.log(json);
+
+    // Check if the deletion was successful (e.g., check if the API responds with a success message)
+    if (response.ok) {
+        // Show success toast
+        // toast.success('Successfully Deleted Note!');
+
+        // Update the state to remove the deleted note
+        const newNotes = notes.filter((note) => note._id !== id);
+        setNotes(newNotes);
+    } else {
+        // If there is an error, handle it (optional)
+        toast.error('Failed to delete note!');
+    }
+};
 
 
-///////////////////////////////////////////////////////////////////////////////////////    Edit a Note   //////////////////////////////////////////////////////////////////////////////////////
+
+  ///////////////////////////////////////////////////////////////////////////////////////    Edit a Note   //////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -81,6 +97,8 @@ const NoteState = (props) => {
       body: JSON.stringify({ title, description, tag })
     });
     const json = await response.json();
+    console.log(json)
+
 
     let newNotes = JSON.parse(JSON.stringify(notes))
     // Logic to edit in client
