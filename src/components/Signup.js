@@ -39,7 +39,7 @@ const Signup = () => {
 
     return (
         <div className='container'>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='container mt-5'>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Name</label>
                     <input type="text" className="form-control" id="name" name="name" onChange={onChange} required/>
@@ -47,7 +47,6 @@ const Signup = () => {
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
                     <input type="email" className="form-control" id="email" name="email" aria-describedby="emailHelp" onChange={onChange} required/>
-                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="password" className="form-label">Password</label>

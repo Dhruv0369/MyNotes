@@ -8,11 +8,9 @@ import Navbar from './components/Navbar';
 import { Home } from './components/Home';  // Import default
 import About from './components/About';  // Ensure About has a default export
 import NoteState from './context/notes/NoteState';
-import Alert from './components/Alert';  // Import default
 import Signup from './components/Signup';  // Ensure Signup has a default export
 import Login from './components/Login';  // Ensure Login has a default export
-// import { ToastContainer } from 'react-toastify';
-import { Toaster, toast } from 'sonner';
+import { Toaster } from 'sonner';
 
 
 
@@ -23,7 +21,6 @@ function App() {
       <Router>
         <Navbar />
         <Toaster richColors position="top-center" />
-        <Alert message="This is amazing React course" />
         <div className="container">
           <Routes>
             <Route path="/" element={<Home />} />
