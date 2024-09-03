@@ -5,6 +5,5 @@ export const Home = () => {
         <div>
             <Notes />
         </div>
-    )
+    );
 }
-// 5:13  sudhi done 63 mo video

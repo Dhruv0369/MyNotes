@@ -1,31 +1,34 @@
 import './App.css';
-import React from "react";
 import {
   BrowserRouter as Router,
-  Routes,
-  Route
+  Route,
+  Routes
 } from "react-router-dom";
-import { Navbar } from './components/Navbar';
-import { Home } from './components/Home';
-import About from './components/About';
+import Navbar from './components/Navbar';
+import {Home} from './components/Home';  // Import default
+import About from './components/About';  // Ensure About has a default export
 import NoteState from './context/notes/NoteState';
+import Alert from './components/Alert';  // Import default
+import Signup from './components/Signup';  // Ensure Signup has a default export
+import Login from './components/Login';  // Ensure Login has a default export
 
 
 function App() {
   return (
-    <>
-      <NoteState>
-        <Router>
-          <Navbar />
-          <div className="container">
-            <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route exact path="/about" element={<About />} />
-            </Routes>
-          </div>
-        </Router>
-      </NoteState>
-    </>
+    <NoteState>
+      <Router>
+        <Navbar />
+        <Alert message="This is amazing React course" />
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
+        </div>
+      </Router>
+    </NoteState>
   );
 }
 
