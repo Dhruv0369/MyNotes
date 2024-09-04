@@ -57,11 +57,11 @@ const NoteState = (props) => {
   const deleteNote = async (id) => {
     // API Call
     const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            "auth-token": localStorage.getItem('token')
-        }
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        "auth-token": localStorage.getItem('token')
+      }
     });
 
     const json = await response.json(); // Await the json response
@@ -69,17 +69,17 @@ const NoteState = (props) => {
 
     // Check if the deletion was successful (e.g., check if the API responds with a success message)
     if (response.ok) {
-        // Show success toast
-        // toast.success('Successfully Deleted Note!');
+      // Show success toast
+      // toast.success('Successfully Deleted Note!');
 
-        // Update the state to remove the deleted note
-        const newNotes = notes.filter((note) => note._id !== id);
-        setNotes(newNotes);
+      // Update the state to remove the deleted note
+      const newNotes = notes.filter((note) => note._id !== id);
+      setNotes(newNotes);
     } else {
-        // If there is an error, handle it (optional)
-        toast.error('Failed to delete note!');
+      // If there is an error, handle it (optional)
+      toast.error('Failed to delete note!');
     }
-};
+  };
 
 
 
