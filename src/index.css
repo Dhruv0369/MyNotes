@@ -11,7 +11,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-i{
+
+i {
   cursor: pointer;
   color: red;
+}
+
+.profile-icon {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-icon .fa-user {
+  cursor: pointer;
+}
+
+.profile-icon .profile {
+  position: absolute;
+  top: 100%; /* Adjusted to show below the icon */
+  right: 0; /* Positioned to the right side */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  display: none;
+  z-index: 1000; /* Ensures it's above other content */
+}
+
+.profile-icon:hover .profile {
+  display: block;
 }

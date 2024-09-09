@@ -11,6 +11,7 @@ import NoteState from './context/notes/NoteState';
 import Signup from './components/Signup';  // Ensure Signup has a default export
 import Login from './components/Login';  // Ensure Login has a default export
 import { Toaster } from 'sonner';
+import Profile from './components/Profile';
 
 
 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route exact path="/profile" element={<Profile />} />
           </Routes>
         </div>
       </Router>

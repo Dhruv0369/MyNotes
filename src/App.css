@@ -1,38 +1,97 @@
-.App {
+/* Profile Card Container */
+.profile-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full viewport height */
+  padding: 20px; /* Add padding for spacing */
+  box-sizing: border-box; /* Include padding in width */
+}
+
+/* Profile Card Styles */
+.profile-card {
+  max-width: 90%;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+/* Header Styles */
+.profile-card-header {
+  background-color: #007bff;
   color: white;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.App-link {
-  color: #61dafb;
+/* Body Styles */
+.profile-card-body {
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Image Styles */
+.profile-image {
+  width: 80%;
+  max-width: 150px;
+  height: auto;
+  border-radius: 50%;
+  margin: 20px auto;
+  background-color: #ccc;
+}
+
+/* Title Styles */
+.profile-title {
+  margin: 10px 0;
+}
+
+/* Logout Icon Styles */
+.logout-icon {
+  cursor: pointer;
+  font-size: 24px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-card {
+    width: 95%;
   }
-  to {
-    transform: rotate(360deg);
+
+  .profile-image {
+    width: 60%;
+    max-width: 120px;
+  }
+
+  .profile-title {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-card {
+    width: 100%;
+    margin: 10px auto;
+    padding: 10px;
+  }
+
+  .profile-image {
+    width: 50%;
+    max-width: 100px;
+  }
+
+  .profile-title {
+    font-size: 16px;
+  }
+
+  .logout-icon {
+    font-size: 20px;
   }
 }
