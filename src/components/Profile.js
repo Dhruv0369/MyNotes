@@ -54,7 +54,6 @@ const Profile = () => {
                         height: '100px',
                         borderRadius: '50%',
                         margin: '20px auto',
-                        backgroundColor: '#ccc',
                     }}
                 />
                 <h5 className="card-title">{userName}</h5>
